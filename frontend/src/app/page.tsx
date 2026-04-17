@@ -23,8 +23,9 @@ const images = [
 ];
 
 async function getBestSellingProducts(): Promise<bestSellingProduct[]> {
+  const SERVER_API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://backend:5000';
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/products/bs`, {
+    const res = await fetch(`${SERVER_API_URL}/api/products/bs`, {
       cache: 'no-store', // Temporary: No cache for immediate updates
     });
 
@@ -46,7 +47,8 @@ async function getBestSellingProducts(): Promise<bestSellingProduct[]> {
 }
 
 async function getProducts(): Promise<Product[]> {
-  try {    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/products`, {
+  const SERVER_API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://backend:5000';
+  try {    const res = await fetch(`${SERVER_API_URL}/api/products`, {
       cache: 'no-store', // Temporary: No cache for immediate updates
     });
 
