@@ -10,8 +10,9 @@ RUN npm install
 COPY . .
 
 # Build Next.js application
-# Note: Next.js reads env vars during build. This default can be overridden via docker-compose
-ENV NEXT_PUBLIC_API_URL=http://localhost:5000
+# Note: Next.js reads env vars during build.
+ARG NEXT_PUBLIC_API_URL=http://localhost
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 RUN npm run build
 
 # Production image
